@@ -1,40 +1,34 @@
 /** @type {import('next').NextConfig} */
+import nextra from "nextra";
+import withPWA from "next-pwa";
 
-const withNextra = require("nextra")({
+const withNextra = nextra({
   theme: "nextra-theme-docs",
   themeConfig: "./theme.config.tsx",
   unstable_staticImage: true,
 });
 
-let nextra_conf = withNextra();
-console.log("nextra_conf.rewrites", nextra_conf.rewrites());
-delete nextra_conf.rewrites;
-
-const withPWA = require("next-pwa")({
+const pwaConfig = withPWA({
   dest: "public",
   disable: process.env.NODE_ENV === "development",
   importScripts: ['/manual-do-calouro/planktos/planktos.min.js']
 });
 
-const config =  withPWA({
-    ...nextra_conf,
-    output: "export",
-    distDir: "docs",
-    basePath: "/manual-do-calouro",
-    images: {
-      unoptimized: true,
-    },
-    assetPrefix: "./",
-    compress: true,
-    swcMinify: true,
-    /* Não da pra usar junto com output export
-      i18n: {
-        locales: ['en', 'pt'],
-        defaultLocale: 'pt'
-      }*/
-  })
+const config = withNextra({
+  ...pwaConfig,
+  output: "export",
+  distDir: "docs",
+  basePath: "/manual-do-calouro",
+  images: {
+    unoptimized: true,
+  },
+  assetPrefix: "./",
+  compress: true,
+  /* Não da pra usar junto com output export
+    i18n: {
+      locales: ['en', 'pt'],
+      defaultLocale: 'pt'
+    }*/
+});
 
-
-console.log("-----", config);
-
-module.exports = config;
+export default config;
