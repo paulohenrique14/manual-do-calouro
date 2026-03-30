@@ -5,9 +5,9 @@ import Giscus from "@giscus/react";
 const config: DocsThemeConfig = {
   logo: <span>CAEC</span>,
   project: {
-    link: "https://github.com/openCAEC/manual-do-calouro",
+    link: "https://github.com/paulohenrique14/manual-do-calouro",
   },
-  docsRepositoryBase: "https://github.com/openCAEC/manual-do-calouro",
+  docsRepositoryBase: "https://github.com/paulohenrique14/manual-do-calouro",
   footer: {
     text: "Manual do Calouro, CAEC",
   },
@@ -38,16 +38,18 @@ const config: DocsThemeConfig = {
       <>
         {children}
         <Giscus
-          repo="openCAEC/manual-do-calouro"
-          repoId="R_kgDOKBM0YA"
+          repo="paulohenrique14/manual-do-calouro"
+          repoId="R_kgDORyfWoA"
           category="General"
-          categoryId="DIC_kwDOKBM0YM4CYNzu"
+          categoryId="DIC_kwDORyfWoM4C5pZU"
           mapping="pathname"
           reactionsEnabled="1"
           emitMetadata="0"
           theme="preferred_color_scheme"
           loading="lazy"
           lang="pt"
+          strict="0"
+          inputPosition="bottom"
         />
       </>
     );
